@@ -1,0 +1,1 @@
+<? $header = '<div class="row red-text text-accent-4"><h1>' . $page . '</h1></div>'; ?>
