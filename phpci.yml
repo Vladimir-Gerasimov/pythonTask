@@ -32,4 +32,5 @@ complete:
         host: "localhost"
         user: "root"
         pass: "root"
+    mysql:
         - "DROP DATABASE IF EXISTS test;"
