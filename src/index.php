@@ -7,7 +7,4 @@ require 'engine/init.php';
 require 'engine/routing.php';
 
 Flight::start();
-
-
-
 ?>
