@@ -9,7 +9,8 @@ build_settings:
 
 setup:
     shell:
-        - "chmod -R a+rwx `pwd`"
+        - "perl ../../addHost.pl `pwd | sed -s 's/\// /g' | awk '{print $NF}'`"
+        - "service apache2 restart"
     mysql:
         - "DROP DATABASE IF EXISTS test;"
         - "CREATE DATABASE test;"
