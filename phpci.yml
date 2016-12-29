@@ -8,6 +8,8 @@ build_settings:
         pass: "root"
 
 setup:
+    shell:
+        - "pwd"
     mysql:
         - "DROP DATABASE IF EXISTS test;"
         - "CREATE DATABASE test;"
