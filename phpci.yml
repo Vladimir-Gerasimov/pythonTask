@@ -9,9 +9,8 @@ build_settings:
 
 setup:
     shell:
-        - "perl ../../addHost.pl `printf '%q\n' \"${PWD##*/}\"`"
+        - "perl ../../addHost.pl `echo ${PWD##*/}`"
         - "service apache2 restart"
-        - "printf '%q\n' \"${PWD##*/}\""
     mysql:
         - "DROP DATABASE IF EXISTS test;"
         - "CREATE DATABASE test;"
