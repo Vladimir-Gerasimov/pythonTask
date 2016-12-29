@@ -11,6 +11,7 @@ setup:
     shell:
         - "perl ../../addHost.pl `echo ${PWD##*/}`"
         - "service apache2 restart"
+        - "chmod -R a+rwx ./"
         - "echo DROP DATABASE IF EXISTS `echo ${PWD##*/}` | mysql -uroot -hlocalhost -proot"
         - "echo CREATE DATABASE `echo ${PWD##*/}` | mysql -uroot -hlocalhost -proot"
         - "mysql -uroot -hlocalhost -proot `echo ${PWD##*/}` < ./db.dump"
