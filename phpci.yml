@@ -9,7 +9,7 @@ build_settings:
 
 setup:
     shell:
-        - "perl ../../addHost.pl `pwd | sed -e 's/\// /g' | awk '{print $NF}'`"
+        - "perl ../../addHost.pl `printf '%q\n' \"${PWD##*/}\"`"
         - "service apache2 restart"
     mysql:
         - "DROP DATABASE IF EXISTS test;"
