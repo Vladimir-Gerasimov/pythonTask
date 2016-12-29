@@ -11,10 +11,8 @@ setup:
     shell:
         - "perl ../../addHost.pl `echo ${PWD##*/}`"
         - "service apache2 restart"
-    mysql:
-        - "DROP DATABASE IF EXISTS `echo ${PWD##*/}`;"
-        - "CREATE DATABASE `echo ${PWD##*/}`;"
-    shell:
+        - "echo 'DROP DATABASE IF EXISTS `echo ${PWD##*/}`' | mysql -uroot -hlocalhost -proot"
+        - "echo 'CREATE DATABASE `echo ${PWD##*/}`' | mysql -uroot -hlocalhost -proot"
         - "mysql -uroot -hlocalhost -proot `echo ${PWD##*/}` < ./db.dump"
     mysql:
         - "DROP DATABASE IF EXISTS test;"
