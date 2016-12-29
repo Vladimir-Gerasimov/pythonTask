@@ -14,18 +14,18 @@ setup:
 
 test:
     php_mess_detector:
-        path: "/src"
+        path: "./src"
         allow_failures: true
     php_code_sniffer:
-        path: "/src"
+        path: "./src"
         standard: "PSR2"
     php_docblock_checker:
-        path: "/src"
+        path: "./src"
     php_cpd:
-        path: "/src"
+        path: "./src"
         allow_failures: true
     php_loc:
-        directory: "/src"
+        directory: "./src"
 
 complete:
     mysql:
