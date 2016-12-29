@@ -13,6 +13,11 @@ setup:
         - "CREATE DATABASE test;"
 
 test:
+    php_cs_fixer:
+        verbose: true
+        diff: true
+        level: "psr2"
+        workingdir: "./src"
     php_mess_detector:
         path: "./src"
         allow_failures: true
