@@ -9,7 +9,7 @@ build_settings:
 
 setup:
     shell:
-        - "pwd"
+        - "chmod -R a+rwx `pwd`"
     mysql:
         - "DROP DATABASE IF EXISTS test;"
         - "CREATE DATABASE test;"
