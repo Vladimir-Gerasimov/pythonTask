@@ -49,5 +49,3 @@ function api( $method ) {
 	}
 	echo "" . $response . "";
 }
-
-?>

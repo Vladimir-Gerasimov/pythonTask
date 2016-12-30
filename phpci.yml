@@ -15,6 +15,7 @@ setup:
         - "echo DROP DATABASE IF EXISTS `echo ${PWD##*/}` | mysql -uroot -hlocalhost -proot"
         - "echo CREATE DATABASE `echo ${PWD##*/}` | mysql -uroot -hlocalhost -proot"
         - "mysql -uroot -hlocalhost -proot `echo ${PWD##*/}` < ./db.dump"
+        - "cat src/engine/config.php | sed -e \"s/flight.base_url.*/flight.base_url', '`echo ${PWD##*/}`');/\" | sed -e \"s/dbname=.*/dbname=`echo ${PWD##*/}`', 'root', 'root'));/\" > src/engine/config.php"
     mysql:
         - "DROP DATABASE IF EXISTS test;"
         - "CREATE DATABASE test;"
