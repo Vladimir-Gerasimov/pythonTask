@@ -25,7 +25,7 @@
 				$("#" + id + "_ok").removeClass('hide');
 				$("#" + id + "_fail").addClass('hide');
 				if(id == 'name') {reg_name = 1;}
-				if(id == 'surname') {reg_surname = 1;}				
+				if(id == 'surname') {reg_surname = 1;}
 			} else {
 				$(this).removeClass('valid');
 				$(this).addClass('invalid');
@@ -79,7 +79,7 @@
 		}
 		if(type == 'password' && id.match(/_conf$/)){
 			pwd = $("#password_reg").val()
-			if(val == pwd){				
+			if(val == pwd){
 				$(this).removeClass('invalid');
 				$(this).addClass('valid');
 				$("#" + id + "_ok").removeClass('hide');
@@ -101,7 +101,7 @@
 			surname = $("#surname").val();
 			mail = $("#email_reg").val();
 			pwd = $("#password_reg").val();
-			$.post('/api/register/', {name: name, surname: surname, mail: mail, pwd: pwd}, function(data){
+			$.post('./api/register/', {name: name, surname: surname, mail: mail, pwd: pwd}, function(data){
 				if( data != 0 && data != 1 ) {
 					$("#modal_head").text("Внимание!");
 					$("#modal_text").text("Произошла ошибка при регистрации. Пожалуйста, попробуйте позже.");
@@ -118,7 +118,7 @@
 				$('#modal').modal('open');
 				setTimeout(function(){
 					if(data == 0){
-						$.post('/api/auth/', {mail:mail, pwd: pwd}, function(d){
+						$.post('./api/auth/', {mail:mail, pwd: pwd}, function(d){
 							if(d == 0) {
 								window.location.href = "/lk";
 							} else if(d == 1){
@@ -148,7 +148,7 @@
 		if( login_mail && login_pwd ) {
 			mail = $("#email").val();
 			pwd = $("#password").val();
-			$.post('/api/auth/', {mail:mail, pwd: pwd}, function(d){
+			$.post('./api/auth/', {mail:mail, pwd: pwd}, function(d){
 				if(d == 0) {
 					window.location.href = "/lk";
 				} else if(d == 1){

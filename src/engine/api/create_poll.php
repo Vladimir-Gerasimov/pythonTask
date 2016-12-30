@@ -4,7 +4,7 @@ function create_poll() {
 		$items = $_POST['items'];
 	
 		$db = Flight::db();
-		$db->exec('insert into `polls` (`items`, `creator`) values ("' . $items . '", ' . Flight::getGlobal('user_id') . ')');
+		$db->exec('insert into `polls` (`items`, `creator`) values ("' . htmlspecialchars($items) . '", ' . Flight::getGlobal('user_id') . ')');
 		
 		$res = $db->query('select max(id) from `polls`');
 		$res = $res->fetchAll();

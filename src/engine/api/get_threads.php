@@ -21,7 +21,7 @@ function get_threads() {
 		$x = $x->fetchAll();
 		$item['attachments'] = array();
 		for( $i = 0; $i < count($x); $i++){
-			array_push($item['attachments'], '/data/' . $x[$i]['type'] . '/' . $x[$i]['name']);
+			array_push($item['attachments'], 'data/' . $x[$i]['type'] . '/' . $x[$i]['name']);
 		}
 		array_push($items, $item);
 	}
