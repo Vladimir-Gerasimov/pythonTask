@@ -21,19 +21,19 @@
 		<div class="nav-wrapper container">
 			<a id="logo-container" href="/" class="brand-logo red-text text-accent-4"><img src="style/image/logo_big.png" width="30" class="valign"> ДУК "Мой Дом"</a>
 			<ul class="right hide-on-med-and-down">
-				<? if( !Flight::getGlobal('user_logged') ) { ?>
+				<?php if( !Flight::getGlobal('user_logged') ) { ?>
 				<li><a href="login" class="red-text text-accent-4"><i class="material-icons left">supervisor_account</i>Войти</a></li>
-				<? } else { ?>
-				<li><a href="lk" class="red-text text-accent-4"><i class="material-icons left">supervisor_account</i><? echo Flight::getGlobal('user_name') . " " . mb_substr( Flight::getGlobal('user_surname'), 0, 1, "UTF-8") . "."; ?></a></li>
-				<? } ?>
+				<?php } else { ?>
+				<li><a href="lk" class="red-text text-accent-4"><i class="material-icons left">supervisor_account</i><?php echo Flight::getGlobal('user_name') . " " . mb_substr( Flight::getGlobal('user_surname'), 0, 1, "UTF-8") . "."; ?></a></li>
+				<?php } ?>
 			</ul>
 
 			<ul id="nav-mobile" class="side-nav">
-				<? if( !Flight::getGlobal('user_logged') ) { ?>
+				<?php if( !Flight::getGlobal('user_logged') ) { ?>
 				<li><a href="login"><i class="material-icons supervisor_account"></i>Войти</a></li>
-				<? } else { ?>
-				<li><a href="lk"><i class="material-icons supervisor_account"></i><? echo Flight::getGlobal('user_name') . " " . substr( Flight::getGlobal('user_surname'), 0, 1); ?></a></li>
-				<? } ?>
+				<?php } else { ?>
+				<li><a href="lk"><i class="material-icons supervisor_account"></i><?php echo Flight::getGlobal('user_name') . " " . substr( Flight::getGlobal('user_surname'), 0, 1); ?></a></li>
+				<?php } ?>
 			</ul>
 			<a href="#" data-activates="nav-mobile" class="button-collapse red-text text-accent-4"><i class="material-icons">menu</i></a>
 		</div>

@@ -1,16 +1,16 @@
 	<div class="container">
 		<div class="row">
-			<? echo $sidebar; ?>
+			<?php echo $sidebar; ?>
 			<div class="col m9 s12">
-				<? echo $header; ?>
-				<? if(Flight::getGlobal('user_logged')){ ?>
+				<?php echo $header; ?>
+				<?php if(Flight::getGlobal('user_logged')){ ?>
 				<script src="style/js/dropzone.js"></script>
 				<script type="text/javascript">
 				Dropzone.options.issueFiles = {
 					maxFilesize: 2,
 					acceptedFiles: "image/*,video/*",
 					renameFilename: function(name){
-						add = "<? echo Flight::getGlobal('user_id');?>";
+						add = "<?php echo Flight::getGlobal('user_id');?>";
 						var text = "";
 						var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
 						for( var i=0; i < 6; i++ ) {
@@ -51,8 +51,8 @@
 						<script type="text/javascript" src="style/js/issue.js"></script>
 					</div>
 				</div>
-				<? } ?>
-				<?
+				<?php } ?>
+				<?php
 				require_once '/engine/api/get_issues.php';
 				
 				$data = json_decode(get_issues());
