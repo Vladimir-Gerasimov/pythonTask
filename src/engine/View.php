@@ -20,9 +20,9 @@ class View {
 		
 		header('Content-type: text/html; charset=UTF-8');
 		$this->Modules = DB::getPageModules($this->id);
-		if($Modules === 1) {
+		if($this->Modules === 1) {
 			/// Extraction error
-		} else if($Modules === 2){
+		} else if($this->Modules === 2){
 			/// No modules
 		} else {
 			$this->styles = $this->Modules->getStyles();
