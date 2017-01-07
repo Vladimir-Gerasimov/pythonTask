@@ -459,7 +459,7 @@ class DB {
 				foreach($data as $row) {
 					$styles = explode(',', $row['styles']);
 					$scripts = explode(',', $row['scripts']);
-					$Position = new Position($row['position_id'], $row['position_name'], $row['position'], $row['block_id'], $row['max_block_items']);
+					$Position = new Position($row['position_id'], $row['position_name'], $row['position'], $row['block_id'], ( isset($row['max_row_items']) ? $row['max_row_items'] : 0 );
 					$Module = new Module($row['id'], $row['module_id'], $row['page_id'], $row['module_name'], $Position, $row['file'], json_decode($row['params'], true), $styles, $scripts);
 					$Modules->addModule($Module);
 				}
