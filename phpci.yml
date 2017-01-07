@@ -9,6 +9,7 @@ build_settings:
 
 setup:
     shell:
+        - "sleep 10s"
         - "echo 'Adding host...'"
         - "perl ../../addHost.pl `echo ${PWD##*/}`"
         - "echo 'Restarting server...'"
