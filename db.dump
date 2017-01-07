@@ -32,6 +32,17 @@ CREATE TABLE `forum` (
 ) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 --
+-- Dumping data for table `forum`
+--
+
+
+/*!40000 ALTER TABLE `forum` DISABLE KEYS */;
+LOCK TABLES `forum` WRITE;
+INSERT INTO `forum` VALUES (1,'test','testtest',-1,'50',16,'2016-12-26 20:43:12'),(2,'test','testtest',-1,'',16,'2016-12-26 20:49:40'),(3,'testhead','test text',-1,'51',16,'2016-12-26 21:38:42'),(4,'alvnsldkn','s;ms;fb;ksdf',-1,'52',16,'2016-12-26 21:39:39'),(5,'sdsdfsfsadv','advasdbvadbad',-1,'53',16,'2016-12-26 21:49:50'),(6,'1','1',-1,'54',16,'2016-12-26 21:57:04'),(7,'dvcs;kdm;vkd','sdv;ksfdm;vl s;sf',16,'55',16,'2016-12-27 09:26:41'),(8,'test thread','test thread',-1,'',16,'2016-12-30 21:39:15'),(9,'wfqfq','qefqefqefqefqefqefqw fw f',17,'50',16,'2016-12-30 21:50:42');
+UNLOCK TABLES;
+/*!40000 ALTER TABLE `forum` ENABLE KEYS */;
+
+--
 -- Table structure for table `house`
 --
 
@@ -47,6 +58,16 @@ CREATE TABLE `house` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 --
+-- Dumping data for table `house`
+--
+
+
+/*!40000 ALTER TABLE `house` DISABLE KEYS */;
+LOCK TABLES `house` WRITE;
+UNLOCK TABLES;
+/*!40000 ALTER TABLE `house` ENABLE KEYS */;
+
+--
 -- Table structure for table `issue_status`
 --
 
@@ -56,6 +77,17 @@ CREATE TABLE `issue_status` (
   `name` varchar(20) COLLATE utf8_bin NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+
+--
+-- Dumping data for table `issue_status`
+--
+
+
+/*!40000 ALTER TABLE `issue_status` DISABLE KEYS */;
+LOCK TABLES `issue_status` WRITE;
+INSERT INTO `issue_status` VALUES (0,'Новая'),(1,'В работе'),(2,'Закрытая'),(3,'Отменена');
+UNLOCK TABLES;
+/*!40000 ALTER TABLE `issue_status` ENABLE KEYS */;
 
 --
 -- Table structure for table `issues`
@@ -75,6 +107,17 @@ CREATE TABLE `issues` (
 ) ENGINE=InnoDB AUTO_INCREMENT=24 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 --
+-- Dumping data for table `issues`
+--
+
+
+/*!40000 ALTER TABLE `issues` DISABLE KEYS */;
+LOCK TABLES `issues` WRITE;
+INSERT INTO `issues` VALUES (6,'Лопнула батарея','По адресу ул. Большая Покровская д. 93, 4-ый подъезд, 1-ый этаж, лопнула в подъезде батарея. Залило водой весь подъезд. Нужно срочно починить. ','',16,'2016-12-25 08:23:15',0,0),(7,'В доме холодно','В доме номер 43 по улице Алексеевская не греют батареи на верхних этажах, температура в квартирах не превышает 17 градусов. Просьба разобраться.','40',16,'2016-12-25 08:28:47',0,0),(8,'Нет горячей воды','В доме 22  по улице Малая Покровская нет горячей воды в первом подъезде. Напор холодной так же слабый.','41,42',16,'2016-12-25 08:37:30',0,0),(10,'Сломан шлагбаум','На парковке у дома №53 по улице Чонгарская не работает шлагбаум №2. Он завис по середине и не двигается никуда.','43',16,'2016-12-25 08:44:09',0,0),(11,'Тестовая проблема','без фото','',25,'2017-01-07 00:56:55',0,0),(12,'Тестовая проблема','С Фото','',25,'2017-01-07 00:57:34',0,0),(13,'Тестовая проблема','И фото работает','77,78,79',25,'2017-01-07 01:03:59',0,0);
+UNLOCK TABLES;
+/*!40000 ALTER TABLE `issues` ENABLE KEYS */;
+
+--
 -- Table structure for table `modules`
 --
 
@@ -87,6 +130,17 @@ CREATE TABLE `modules` (
   `scripts` text COLLATE utf8_bin NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+
+--
+-- Dumping data for table `modules`
+--
+
+
+/*!40000 ALTER TABLE `modules` DISABLE KEYS */;
+LOCK TABLES `modules` WRITE;
+INSERT INTO `modules` VALUES (1,'Приветствие','greeting.html','',''),(2,'Логотип','logo.html','',''),(3,'Вход в личный кабинет','enter.html','',''),(4,'Icon Block','iconblock.html','',''),(5,'Авторизация','auth.html','','auth'),(6,'Трекер проблем','issues.html','','dropzone,issues'),(7,'Боковое меню','sidemenu.html','',''),(8,'Сообщество','community.html','','dropzone,community');
+UNLOCK TABLES;
+/*!40000 ALTER TABLE `modules` ENABLE KEYS */;
 
 --
 -- Table structure for table `page_modules`
@@ -103,6 +157,17 @@ CREATE TABLE `page_modules` (
 ) ENGINE=InnoDB AUTO_INCREMENT=28 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 --
+-- Dumping data for table `page_modules`
+--
+
+
+/*!40000 ALTER TABLE `page_modules` DISABLE KEYS */;
+LOCK TABLES `page_modules` WRITE;
+INSERT INTO `page_modules` VALUES (1,1,1,1,'[]'),(2,2,1,2,'[]'),(3,3,1,3,'[]'),(4,4,1,4,'{\"icon\": \"description\", \"heading\": \"Документы\", \"text\": \"\", \"link\": \"docs\"}'),(5,4,1,5,'{\"icon\": \"question_answer\", \"heading\": \"Общение\", \"text\": \"\", \"link\": \"community\"}'),(6,4,1,6,'{\"icon\": \"report_problem\", \"heading\": \"Трекер проблем\", \"text\": \"\", \"link\": \"tracker\"}'),(7,4,1,7,'{\"icon\": \"call\", \"heading\": \"Контакты\", \"text\": \"\", \"link\": \"contacts\"}'),(8,1,2,1,'[]'),(9,2,2,2,'[]'),(10,3,2,3,'[]'),(11,5,2,12,'[]'),(12,1,3,1,'[]'),(13,1,4,1,'[]'),(14,1,5,1,'[]'),(15,1,6,1,'[]'),(16,2,3,2,'[]'),(17,2,4,2,'[]'),(18,2,5,2,'[]'),(19,2,6,2,'[]'),(20,3,3,3,'[]'),(21,3,4,3,'[]'),(22,3,5,3,'[]'),(23,3,6,3,'[]'),(24,6,4,12,'[]'),(25,7,4,13,'[]'),(26,7,5,13,'[]'),(27,8,5,12,'[]');
+UNLOCK TABLES;
+/*!40000 ALTER TABLE `page_modules` ENABLE KEYS */;
+
+--
 -- Table structure for table `pages`
 --
 
@@ -114,6 +179,17 @@ CREATE TABLE `pages` (
   `name` varchar(100) COLLATE utf8_bin NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+
+--
+-- Dumping data for table `pages`
+--
+
+
+/*!40000 ALTER TABLE `pages` DISABLE KEYS */;
+LOCK TABLES `pages` WRITE;
+INSERT INTO `pages` VALUES (1,'/','','Главная'),(2,'/login','','Вход в систему'),(3,'/docs','','Документы'),(4,'/tracker','','Трекер проблем'),(5,'/community','','Общение'),(6,'/contacts','','Контакты'),(7,'/lk','','Личный кабинет');
+UNLOCK TABLES;
+/*!40000 ALTER TABLE `pages` ENABLE KEYS */;
 
 --
 -- Table structure for table `poll_votes`
@@ -130,6 +206,17 @@ CREATE TABLE `poll_votes` (
 ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 --
+-- Dumping data for table `poll_votes`
+--
+
+
+/*!40000 ALTER TABLE `poll_votes` DISABLE KEYS */;
+LOCK TABLES `poll_votes` WRITE;
+INSERT INTO `poll_votes` VALUES (1,17,0,16,'2017-01-03 21:25:21'),(2,17,1,17,'2017-01-03 21:25:21'),(3,17,0,18,'2017-01-03 21:25:44'),(4,17,0,18,'2017-01-03 21:25:44');
+UNLOCK TABLES;
+/*!40000 ALTER TABLE `poll_votes` ENABLE KEYS */;
+
+--
 -- Table structure for table `polls`
 --
 
@@ -140,6 +227,17 @@ CREATE TABLE `polls` (
   `creator` int(11) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+
+--
+-- Dumping data for table `polls`
+--
+
+
+/*!40000 ALTER TABLE `polls` DISABLE KEYS */;
+LOCK TABLES `polls` WRITE;
+INSERT INTO `polls` VALUES (1,'Да, хочу знакомиться,Нет, я куркуль,',16),(2,'Все устраивает,Есть нарекания,Все плохо,',16),(3,'Все устраивает,есть нарекания,все плохо,',16),(4,'123ьвм,ывмжьлыв,ывжмьлыа,',16),(5,'one,ttwo,three,',16),(6,'123,456,789,',16),(7,'1,2',16),(8,'1,2',16),(9,'123,456,789,',16),(10,'123,dkckd,',16),(11,'qevse,sevsbsr,',16),(12,'sdsfsfbs,sbsdfbsf,',16),(13,'advadb,sdbsdbsb,',16),(14,'1,1,',16),(15,'acvew,dvsdbvs,fdbdfbd,',16),(16,'[&quot;1&quot;,&quot;2&quot;]',16),(17,'[\"qef;kqe;\",\"qef;en\"]',16);
+UNLOCK TABLES;
+/*!40000 ALTER TABLE `polls` ENABLE KEYS */;
 
 --
 -- Table structure for table `position_block`
@@ -154,6 +252,17 @@ CREATE TABLE `position_block` (
 ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 --
+-- Dumping data for table `position_block`
+--
+
+
+/*!40000 ALTER TABLE `position_block` DISABLE KEYS */;
+LOCK TABLES `position_block` WRITE;
+INSERT INTO `position_block` VALUES (1,'Promo',4),(2,'Base',4),(3,'Content',0),(4,'Content',0);
+UNLOCK TABLES;
+/*!40000 ALTER TABLE `position_block` ENABLE KEYS */;
+
+--
 -- Table structure for table `positions`
 --
 
@@ -165,6 +274,17 @@ CREATE TABLE `positions` (
   `block_id` int(11) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+
+--
+-- Dumping data for table `positions`
+--
+
+
+/*!40000 ALTER TABLE `positions` DISABLE KEYS */;
+LOCK TABLES `positions` WRITE;
+INSERT INTO `positions` VALUES (1,'Slide','slide',0),(2,'Top bar left','topbar_left',0),(3,'Top bar right','topbar_right',0),(4,'Promo 1','promo_1',1),(5,'Promo 2','promo_2',1),(6,'Promo 3','promo_3',1),(7,'Promo 4','promo_4',1),(8,'Base 1','base_1',2),(9,'Base 2','base_2',2),(10,'Base 3','base_3',2),(11,'Base 4','base_4',2),(12,'Content','content',3),(13,'Sidebar left','sidebar_left',0),(14,'Sidebar right','sidebar_right',0),(15,'Footer 1','footer_1',0),(16,'Footer 2','footer_2',0),(17,'Footer 3','footer_3',0),(18,'Footer 4','footer_4',0),(19,'Copyright','copyright',0);
+UNLOCK TABLES;
+/*!40000 ALTER TABLE `positions` ENABLE KEYS */;
 
 --
 -- Table structure for table `user`
@@ -186,6 +306,17 @@ CREATE TABLE `user` (
 ) ENGINE=InnoDB AUTO_INCREMENT=26 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 --
+-- Dumping data for table `user`
+--
+
+
+/*!40000 ALTER TABLE `user` DISABLE KEYS */;
+LOCK TABLES `user` WRITE;
+INSERT INTO `user` VALUES (16,'Вальдимар','Геркин',0,0,0,'gerkarasta@gmail.com','59a19d7d5411651d9f71c81b0fbd07fb',''),(17,'\'testOOP\'','\'testOOP\'',0,0,0,'\'erkarasta@gmail.com\'','$2y$10$QR.2od5Gndu9ozwtLFKHT.9rbbpD..K4ygWkikdpSQC3NaxewjnQK',''),(18,'\'testOOP\'','\'testOOP\'',0,0,0,'\'1gerkarasta@gmail.com\'','$2y$10$nEH/jjUlPbkVnNCrYHQnu.wQ5bFEO8qoGxPlNXTOHZHdrLdeXBv8S',''),(19,'testOOP','testOOP',0,0,0,'1gerkarasta@gmail.com','$2y$10$oKA6MN8cYufY3a5USaYqkO.tHUAco/VL4asKsGJ3pArVCG3P61iee',''),(20,'testOOP','testOOP',0,0,0,'2gerkarasta@gmail.com','$2y$10$dS9s0h0p.KaslqprQCYkMOv.j8bmn5bz1nX5qXOBEGf4HU8YiJ/kS',''),(21,'testOOP','testOOP',0,0,0,'3gerkarasta@gmail.com','$2y$10$yuurYDn5CpJ/gEkRLJ/3/u7iKUXdba03McLjiNiXwnZa/RvPGgrkW',''),(22,'testOOP','testOOP',0,0,0,'4gerkarasta@gmail.com','$2y$10$rrzNzfkIomPz2W8QeFEsV.6F6Yevy.TCuyBL3eouU5B5CGAz2bFY6',''),(23,'testOOP','testOOP',0,0,0,'5gerkarasta@gmail.com','$2y$10$oWuHD9laQnoQM3tSN/tvJ.w07CFIzGH5zJro.OzgvYUbCnqXOX5Ai',''),(24,'testOOP','testOOP',0,0,0,'6gerkarasta@gmail.com','$2y$10$8y6KOZHBMDbQtpyXPUYTQ.tdRGjr3UFYdUO.SKBG/W69DDewdnoO2',''),(25,'Маша','Завьялова',0,0,0,'masha@mail.ru','$2y$10$3FFFg24/JvudqW7kWWSSRuhMXQQJwk5QJxM3mWZZRu..pkONTjXEe','');
+UNLOCK TABLES;
+/*!40000 ALTER TABLE `user` ENABLE KEYS */;
+
+--
 -- Table structure for table `user_data`
 --
 
@@ -198,6 +329,17 @@ CREATE TABLE `user_data` (
   PRIMARY KEY (`id`),
   KEY `id` (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=80 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+
+--
+-- Dumping data for table `user_data`
+--
+
+
+/*!40000 ALTER TABLE `user_data` DISABLE KEYS */;
+LOCK TABLES `user_data` WRITE;
+INSERT INTO `user_data` VALUES (1,16,'image','16_6zXfCp_111.png'),(2,16,'video','16_AB8WQj_SampleVideo_1280x720_1mb.mp4'),(3,16,'image','16_fNTmr7_triggercall.png'),(4,16,'image','16_nA0zDP_Untitled.png'),(5,16,'image','16_00IDid_Untitled.png'),(6,16,'image','16_OPqHeD_triggercall.png'),(10,16,'image','16_ZfCpwT_Untitled.png'),(11,16,'image','16_NvhSSz_рашн.png'),(13,16,'image','16_dd0fRF_рашн.png'),(14,16,'video','16_l6Ib0k_SampleVideo_1280x720_1mb.mp4'),(15,16,'image','16_XTxMbQ_Untitled.png'),(16,16,'image','16_H8iezE_triggercall.png'),(17,16,'image','16_ZkhNt7_111.png'),(19,16,'image','16_OaZx8b_folders.png'),(20,16,'image','16_QOUpSq_stackProfiler.png'),(21,16,'image','16_OmDWda_triggercall.png'),(22,16,'image','16_M9TD2K_Untitled.png'),(23,16,'image','16_aDv8YJ_рашн.png'),(24,16,'image','16_IpYluT_triggercall.png'),(25,16,'image','16_Qy1HfM_Untitled.png'),(26,16,'image','16_Ejs7Fm_рашн.png'),(27,16,'image','16_obOdUv_рашн.png'),(28,16,'image','16_F2oM9f_triggercall.png'),(29,16,'image','16_CJafsE_Untitled.png'),(30,16,'image','16_18GeOe_triggercall.png'),(31,16,'image','16_BQzkXa_Untitled.png'),(32,16,'image','16_sOLGWa_рашн.png'),(33,16,'image','16_EE81Le_triggercall.png'),(34,16,'image','16_kL04Xw_Untitled.png'),(35,16,'image','16_wMMEIh_рашн.png'),(36,16,'image','16_mBF7M5_triggercall.png'),(37,16,'image','16_00IDid_Untitled.png'),(38,16,'image','16_iTl2wq_рашн.png'),(39,16,'image','16_5kEJmS_ep5-sample[1].jpg'),(40,16,'image','16_LHwp5D_DSCN5222[1].JPG'),(41,16,'image','16_68am0J_515218-20140317-ground-level-rochester-water-sample[1].jpg'),(42,16,'image','16_pQGj3x_watersample2[1].jpg'),(43,16,'image','16_mIYAqu_maxresdefault[1].jpg'),(44,16,'image','16_MqgwrW_freeproductsamples[1].jpg'),(45,16,'image','16_aVm7KS_freeproductsamples[1].jpg'),(46,16,'image','16_dWp9ft_screencapture-localhost-1482062270259.png'),(47,16,'image','16_sihTwT_screencapture-localhost-login-1482062468596.png'),(48,16,'image','16_O9n9xZ_triggercall.png'),(49,16,'image','16_afxsUc_Untitled.png'),(50,16,'image','16_slHDIS_triggercall.png'),(51,16,'image','16_pUUXO3_Untitled.png'),(52,16,'image','16_tyMGKl_рашн.png'),(53,16,'image','16_gI1Sct_рашн.png'),(54,16,'image','16_rkgYLj_triggercall.png'),(55,16,'image','16_xGhcf2_pikabu.png'),(56,16,'image','16_6q6o4v_рашн.png'),(57,16,'image','16_FtspKb_рашн.png'),(58,16,'image','16_DnbydA_Untitled.png'),(59,16,'image','16_xCo54G_Untitled.png'),(60,16,'image','16_ZTf7JC_stackProfiler.png'),(61,16,'image','16_aqtKhI_1111.png'),(62,16,'image','16_IKvcge_pikabu.png'),(63,25,'image','W4vyjF_Untitled.png'),(64,25,'image','RWfikd_1111.png'),(65,25,'image','D9iYDk_folders.png'),(66,25,'image','rtphHT_pikabu.png'),(67,25,'image','k189JU_Untitled.png'),(68,25,'image','YMgDps_рашн.png'),(69,25,'image','mE74KG_Untitled.png'),(70,25,'image','smPJ6q_triggercall.png'),(71,25,'image','2BBS7J_Untitled.png'),(72,25,'image','PpNzey_рашн.png'),(73,25,'image','NC3uPr_triggercall.png'),(74,25,'image','kntyae_triggercall.png'),(75,25,'image','Zl0an7_Untitled.png'),(76,25,'image','0k8V2Y_рашн.png'),(77,25,'image','TuquRq_triggercall.png'),(78,25,'image','QFde0X_Untitled.png'),(79,25,'image','Qi9wFJ_рашн.png');
+UNLOCK TABLES;
+/*!40000 ALTER TABLE `user_data` ENABLE KEYS */;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;

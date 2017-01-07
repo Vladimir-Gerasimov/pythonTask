@@ -1,9 +1,9 @@
-<div class="col s12 m<?=$width ?>">
+<div class="col s12 m<?=$width?>">
 	<div class="row">
 		<div class="icon-block">
 			<h2 class="center red-text text-accent-4"><i class="material-icons"><?=$icon ?></i></h2>
-			<h5 class="center"><?=$heading ?></h5>
-			<p class="light"><?=$text ?></p>
+			<h5 class="center"><?=$heading?></h5>
+			<p class="light"><?=$text?></p>
 		</div>
 	</div>
 	<div class="row">
