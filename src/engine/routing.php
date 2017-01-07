@@ -1,13 +1,13 @@
 <?php
 
-Flight::route('/', 'index');
-Flight::route('/login', 'login');
-Flight::route('/lk', 'lk');
-Flight::route('/tracker', 'tracker');
-Flight::route('/community', 'community');
-Flight::route('/community/@id', 'community_thread');
+//Flight::route('/api/@method', function($method){ Flight::api($method); });
+//Flight::route('/*', function($route) { var_dump($route); }, true);
+//Flight::route('/login', 'login');
+//Flight::route('/lk', 'lk');
+//Flight::route('/tracker', 'tracker');
+//Flight::route('/community', 'community');
+//Flight::route('/community/@id', 'community_thread');
 
-Flight::route('/api/@method', 'api');
 
 
 
@@ -36,16 +36,3 @@ function community_thread($id) {
 	Flight::render('thread.php', array('id' => $id));
 };
 
-
-
-function api( $method ) {
-	$modFileName = "/api/". $method . ".php";
-	$response = "";
-	if( file_exists( dirname(__file__) . $modFileName ) ) {
-		include_once( dirname(__file__) . $modFileName );
-		if( is_callable( $method ) ) {
-			$response = $method();
-		}
-	}
-	echo "" . $response . "";
-}

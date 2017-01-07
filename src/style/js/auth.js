@@ -101,40 +101,24 @@
 			surname = $("#surname").val();
 			mail = $("#email_reg").val();
 			pwd = $("#password_reg").val();
-			$.post('./api/register/', {name: name, surname: surname, mail: mail, pwd: pwd}, function(data){
-				if( data != 0 && data != 1 ) {
-					$("#modal_head").text("Внимание!");
-					$("#modal_text").text("Произошла ошибка при регистрации. Пожалуйста, попробуйте позже.");
-					$("#modal_btn").addClass('red accent-4');
-				} else if( data == 1 ) {
-					$("#modal_head").text("Внимание!");
-					$("#modal_text").text("Введенный e-mail уже зарегистрирован. Попробуйде другой или пройдите авторизацию.");
-					$("#modal_btn").addClass('red accent-4');
-				} else if( data == 0 ) {
+			$.post('./api/Register/', {name: name, surname: surname, mail: mail, pwd: pwd}, function(d){ 
+				if( d["code"] == 0 ) {
 					$("#modal_head").text("Поздравляем!");
 					$("#modal_text").text("Регистрация успешно завершена, сейчас вы будете перенаправлены в личный кабинет.");
+					$("#modal_btn").addClass('white-text');
+					$("#modal_btn").removeClass('red accent-4');
 					$("#modal_btn").addClass('green');
+				} else {
+					$("#modal_head").text("Внимание!");
+					$("#modal_text").text(d["error"]);
+					$("#modal_btn").addClass('white-text');
+					$("#modal_btn").removeClass('green');
+					$("#modal_btn").addClass('red accent-4');
 				}
 				$('#modal').modal('open');
 				setTimeout(function(){
-					if(data == 0){
-						$.post('./api/auth/', {mail:mail, pwd: pwd}, function(d){
-							if(d == 0) {
-								window.location.href = "/lk";
-							} else if(d == 1){
-								$('#modal').modal('close');
-								$("#modal_head").text("Внимание!");
-								$("#modal_text").text("Email не зарегистрирован");
-								$("#modal_btn").addClass('red accent-4');
-								$('#modal').modal('open');
-							} else {
-								$('#modal').modal('close');
-								$("#modal_head").text("Внимание!");
-								$("#modal_text").text("Произошла ошибка при авторизации. Пожалуйста, попробуйте позже.");
-								$("#modal_btn").addClass('red accent-4');
-								$('#modal').modal('open');
-							}
-						});
+					if(d["code"] == 0){
+						auth(mail, pwd);
 					}
 				}, 1000);
 			});
@@ -148,27 +132,27 @@
 		if( login_mail && login_pwd ) {
 			mail = $("#email").val();
 			pwd = $("#password").val();
-			$.post('./api/auth/', {mail:mail, pwd: pwd}, function(d){
-				if(d == 0) {
-					window.location.href = "/lk";
-				} else if(d == 1){
-					$('#modal').modal('close');
-					$("#modal_head").text("Внимание!");
-					$("#modal_text").text("Email не зарегистрирован");
-					$("#modal_btn").addClass('red accent-4');
-					$('#modal').modal('open');
-				} else {
-					$('#modal').modal('close');
-					$("#modal_head").text("Внимание!");
-					$("#modal_text").text("Произошла ошибка при авторизации. Пожалуйста, попробуйте позже.");
-					$("#modal_btn").addClass('red accent-4');
-					$('#modal').modal('open');
-				}
-			});
+			auth(mail, pwd);
 		} else {
 			$("i.material-icons.red-text").effect('shake');
 		}
 	});
+	
+	function auth(mail, pwd) {
+		$.post('./api/Auth/', {mail:mail, pwd: pwd}, function(d){
+			if(d["code"] == 0) {
+				window.location.href = "lk";
+			} else {
+				//$('#modal').modal('close');
+				$("#modal_head").text("Внимание!");
+				$("#modal_text").text(d["error"]);
+				$("#modal_btn").addClass('white-text');
+				$("#modal_btn").removeClass('green');
+				$("#modal_btn").addClass('red accent-4');
+				$('#modal').modal('open');
+			}
+		});
+	}
 	
   });
 })(jQuery);

@@ -1,10 +1,4 @@
-
-  <div class="container">
-
-      
-		  <div class="row">
-			<? echo $sidebar; ?>
-			<div class="col m9 s12">
+<div class="col s12">
 				<? echo $header; ?>
 		  <? if(Flight::getGlobal('user_logged')){ ?>
 				<script src="style/js/dropzone.js"></script>

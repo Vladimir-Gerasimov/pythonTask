@@ -1,0 +1,1 @@
+<a id="logo-container" href="<?=Flight::get('flight.base_url')?>" class="brand-logo red-text text-accent-4"><img src="style/image/logo_big.png" width="30" class="valign">ДУК "Мой Дом"</a>
