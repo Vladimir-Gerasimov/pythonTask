@@ -3,7 +3,7 @@
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no"/>
-	<title>ДУК "Мой дом" - <?=$page_name ?></title>
+	<title>ДУК "Мой дом"<?=(!empty($page_name) ? ' - ' . $page_name : "")?></title>
 	<!-- CSS	-->
 	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css?family=Ubuntu:300,400,500,700&amp;subset=cyrillic" rel="stylesheet">
@@ -14,8 +14,8 @@
 <body>
 	<nav class="white" role="navigation">
 		<div class="nav-wrapper container">
-			<?=$topbar_left ?>
-			<?=$topbar_right ?>
+			<?=(!empty($topbar_left) ? $topbar_left : "") ?>
+			<?=(!empty($topbar_right) ? $topbar_right : "") ?>
 
 			<ul id="nav-mobile" class="side-nav">
 				<?php if( !Flight::getGlobal('user_logged') ) { ?>
@@ -31,7 +31,7 @@
 	<!--
 	SLIDER SECTION
 	-->
-	<?=$slide ?>
+	<?=(!empty($slide) ? $slide : "" )?>
 
 	<?php if(!empty($promo_1) || !empty($promo_2) || !empty($promo_3) || !empty($promo_4)) { ?>
 	<!--
@@ -40,10 +40,10 @@
 	<div class="container">
 		<div class="section">
 			<div class="row">
-				<?=$promo_1?>
-				<?=$promo_2?>
-				<?=$promo_3?>
-				<?=$promo_4?>
+				<?=(!empty($promo_1) ? $promo_1 : "")?>
+				<?=(!empty($promo_2) ? $promo_2 : "")?>
+				<?=(!empty($promo_3) ? $promo_3 : "")?>
+				<?=(!empty($promo_4) ? $promo_4 : "")?>
 			</div>
 		</div>
 	</div>
@@ -65,7 +65,7 @@
 				!empty($sidebar_right) ? $width -= 3 : $width;
 				?>
 				<div class="col m<?=$width ?>">
-					<?=$content?>
+					<?=(!empty($content) ? $content : "")?>
 				</div>
 				<?php if(!empty($sidebar_right)) { ?>
 				<div class="col m3">
@@ -76,19 +76,21 @@
 		</div>
 	</div>
 	
+	<?php if(!empty($base_1) || !empty($base_2) || !empty($base_3) || !empty($base_4)) { ?>
 	<!--
 	BASE SECTION
 	-->
 	<div class="container">
 		<div class="section">
 			<div class="row">
-				<?=$base_1?>
-				<?=$base_2?>
-				<?=$base_3?>
-				<?=$base_4?>
+				<?=(!empty($base_1) ? $base_1 : "")?>
+				<?=(!empty($base_2) ? $base_2 : "")?>
+				<?=(!empty($base_3) ? $base_3 : "")?>
+				<?=(!empty($base_4) ? $base_4 : "")?>
 			</div>
 		</div>
 	</div>
+	<?php } ?>
 	<footer class="page-footer red">
 		<div class="container">
 			<div class="row">
