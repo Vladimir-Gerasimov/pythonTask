@@ -1,13 +1,7 @@
-
-  <div class="container">
-
-      
-		  <div class="row">
-			<? echo $sidebar; ?>
-			<div class="col m9 s12">
+<div class="col s12">
 				<? echo $header; ?>
 		  <? if(Flight::getGlobal('user_logged')){ ?>
-				<script src="/style/js/dropzone.js"></script>
+				<script src="style/js/dropzone.js"></script>
 				<script type="text/javascript">
 				Dropzone.options.issueFiles = {
 					maxFilesize: 2,
@@ -56,17 +50,17 @@
 						</div>
 						<div class="row">
 							<a id="filesAdd" class="waves-effect waves-light red accent-4 white-text btn"><i class="material-icons left">add_circle_outline</i>Добавить файлы</a>
-							<form action="/api/file_upload" class="dropzone hide" id="issueFiles"></form>
+							<form action="api/file_upload" class="dropzone hide" id="issueFiles"></form>
 						</div>
 					</div>
 					<div class="modal-footer">
-						<a href="#" id="modal_btn" class="modal-action modal-close waves-effect waves-green btn-flat ">Отправить</a>
+						<a id="modal_btn" class="modal-action modal-close waves-effect waves-green btn-flat ">Отправить</a>
 					</div>
 				</div>
 				<div class="row">
 					<div class="col s12">
 						<a id="create" class="waves-effect waves-light red accent-4 btn-large"><i class="material-icons left">add_circle_outline</i>Создать тему</a>
-						<script type="text/javascript" src="/style/js/issue.js"></script>
+						<script type="text/javascript" src="style/js/issue.js"></script>
 					</div>
 				</div>
 				<? } ?>
@@ -124,14 +118,14 @@
 	});
 	
 	function createTopic( pollId ){
+		console.log(4);
 		files = Object.keys(_FILENAMES_).join(',');
-		alert( pollId);
-		$.post('/api/create_topic', { head: $("#head").val(), text: $("#text").val(), poll: pollId, attachments: files}, function(d){
+		$.post('./api/create_topic', { head: $("#head").val(), text: $("#text").val(), poll: pollId, attachments: files}, function(d){
 			if( !d.match(/.*error.*/i) ) {
 				if( d.match(/id:(\d+)/) ){
 					matches = d.match(/id:(\d+)/);
 					threadId = matches[matches.length - 1];
-					window.location.href = "/community/" + threadId;
+					//window.location.href = "community/" + threadId;
 				}
 			} else {
 				// error handling
@@ -141,15 +135,18 @@
 	
 	$("#modal_btn").on('click', function(){
 		pollId = -1;
+		console.log(1);
 		if(pollItems > 0) {
+		console.log(2);
 			items = [];
 			$("[id^=poll_item]").each(function(){
 				if( $(this).val() != "" ) {
 					items.push( $(this).val() );
 				}
 			});
-			if(items.lenght > 0){
-				$.post('/api/create_poll/', {items:JSON.strinify(items)}, function(d){
+			if(items.length > 0){
+		console.log(3);
+				$.post( './api/create_poll/', {items:JSON.stringify(items)}, function(d){
 					if( !d.match(/.*error.*/i) ) {
 						if( d.match(/id:(\d+)/) ){
 							matches = d.match(/id:(\d+)/);
@@ -162,7 +159,7 @@
 						////
 					}
 				});
-			}			
+			}
 		} else {
 			createTopic(pollId);
 		}

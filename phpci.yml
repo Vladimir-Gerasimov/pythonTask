@@ -8,11 +8,35 @@ build_settings:
         pass: "root"
 
 setup:
+    shell:
+        - "sleep 10s"
+        - "echo 'Adding host...'"
+        - "perl ../../addHost.pl `echo ${PWD##*/}`"
+        - "echo 'Restarting server...'"
+        - "service apache2 restart"
+        - "echo 'Changing rights...'"
+        - "chmod -R a+rwx ./"
+        - "echo 'Creating database for the site...'"
+        - "echo DROP DATABASE IF EXISTS `echo ${PWD##*/}` | mysql -uroot -hlocalhost -proot"
+        - "echo CREATE DATABASE `echo ${PWD##*/}` | mysql -uroot -hlocalhost -proot"
+        - "echo 'Injecting sql dump...'"
+        - "mysql -uroot -hlocalhost -proot `echo ${PWD##*/}` < ./db.dump"
+        - "echo 'Rewriting config...'"
+        - "cat src/engine/Init.php | sed -e \"s/flight.base_url.*/flight.base_url', '`echo ${PWD##*/}`');/\" | sed -e \"s/dbname=.*/dbname=`echo ${PWD##*/}`', 'root', 'root'));/\" > src/engine/Init.php"
+        - "cat src/engine/Init.php"
+        - "echo 'Rewriting htaccess...'"
+        - "cat src/.htaccess | sed -e \"s|RewriteBase.*|RewriteBase \/`echo ${PWD##*/}`\/|\" > src/.htaccess"
+        - "cat src/.htaccess"
     mysql:
         - "DROP DATABASE IF EXISTS test;"
         - "CREATE DATABASE test;"
 
 test:
+    php_cs_fixer:
+        verbose: true
+        diff: true
+        level: "psr2"
+        workingdir: "./src"
     php_mess_detector:
         path: "./src"
         allow_failures: true
@@ -28,6 +52,13 @@ test:
         directory: "./src"
 
 complete:
+    slack_notify:
+        webhook_url: "https://hooks.slack.com/services/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"
+        room: "#phpci"
+        username: "PHPCI"
+        icon: ":ghost:"
+        message: "%PROJECT_TITLE% - build %BUILD% completed"
+        show_status: true
     mysql:
         host: "localhost"
         user: "root"

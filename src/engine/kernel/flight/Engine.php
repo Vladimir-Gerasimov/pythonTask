@@ -80,6 +80,7 @@ class Engine {
      * Initializes the framework.
      */
     public function init() {
+		session_set_cookie_params(1200);
 		session_start();
         
 		static $initialized = false;

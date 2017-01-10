@@ -1,16 +1,16 @@
 	<div class="container">
 		<div class="row">
-			<? echo $sidebar; ?>
+			<?php echo $sidebar; ?>
 			<div class="col m9 s12">
-				<? echo $header; ?>
-				<? if(Flight::getGlobal('user_logged')){ ?>
-				<script src="/style/js/dropzone.js"></script>
+				<?php echo $header; ?>
+				<?php if(Flight::getGlobal('user_logged')){ ?>
+				<script src="style/js/dropzone.js"></script>
 				<script type="text/javascript">
 				Dropzone.options.issueFiles = {
 					maxFilesize: 2,
 					acceptedFiles: "image/*,video/*",
 					renameFilename: function(name){
-						add = "<? echo Flight::getGlobal('user_id');?>";
+						add = "<?php echo Flight::getGlobal('user_id');?>";
 						var text = "";
 						var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
 						for( var i=0; i < 6; i++ ) {
@@ -38,7 +38,7 @@
 						</div>
 						<div class="row">
 							<a id="filesAdd" class="waves-effect waves-light red accent-4 white-text btn"><i class="material-icons left">add_circle_outline</i>Добавить файлы</a>
-							<form action="/api/file_upload" class="dropzone hide" id="issueFiles"></form>
+							<form action="api/file_upload" class="dropzone hide" id="issueFiles"></form>
 						</div>
 					</div>
 					<div class="modal-footer">
@@ -48,11 +48,11 @@
 				<div class="row">
 					<div class="col s12">
 						<a id="create" class="waves-effect waves-light red accent-4 btn-large"><i class="material-icons left">add_circle_outline</i>Сообщить о проблеме </a>
-						<script type="text/javascript" src="/style/js/issue.js"></script>
+						<script type="text/javascript" src="style/js/issue.js"></script>
 					</div>
 				</div>
-				<? } ?>
-				<?
+				<?php } ?>
+				<?php
 				require_once '/engine/api/get_issues.php';
 				
 				$data = json_decode(get_issues());
@@ -96,7 +96,7 @@
 			head = $("#issue").val();
 			text = $("#text").val();
 			files = Object.keys(_FILENAMES_).join(',');
-			$.post('/api/create_issue/', {head:head, text: text, attachments: files}, function(d){
+			$.post('api/create_issue/', {head:head, text: text, attachments: files}, function(d){
 			if(d.trim() == 0){
 					$("#issue").val('');
 					$("#text").val('');

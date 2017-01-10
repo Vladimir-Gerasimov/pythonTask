@@ -1,5 +1,0 @@
-<?php
-
-$db = Flight::db();
-
-?>
