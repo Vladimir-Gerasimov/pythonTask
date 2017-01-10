@@ -25,7 +25,7 @@ setup:
         - "cat src/engine/Init.php | sed -e \"s/flight.base_url.*/flight.base_url', '`echo ${PWD##*/}`');/\" | sed -e \"s/dbname=.*/dbname=`echo ${PWD##*/}`', 'root', 'root'));/\" > src/engine/Init.php"
         - "cat src/engine/Init.php"
         - "echo 'Rewriting htaccess...'"
-        - "cat src/.htaccess | sed -e \"s|RewriteBase.*|RewriteBase \/`echo ${PWD##*/}`\/|\" > src/.htaccess"
+        - "cat src/.htaccess | sed -e \"s/RewriteBase.*/RewriteBase \/`echo ${PWD##*/}`\//\" > src/.htaccess"
         - "cat src/.htaccess"
     mysql:
         - "DROP DATABASE IF EXISTS test;"
