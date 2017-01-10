@@ -402,14 +402,14 @@ class DB {
 				$Files = new FileFactory();
 			}
 			$Poll;
-			if($thread['poll_id'] != -1) {
-				$Poll = DB::getPoll($thread['poll_id']);
+			if($thread['poll'] != -1) {
+				$Poll = DB::getPoll($thread['poll']);
 			} else {
 				$Poll = new Poll();
 			}
 			$Thread = new Thread($thread['id'], $thread['head'], $thread['text'], $thread['creator'], $thread['date'], $Poll, $Files);
 			
-			return 0;
+			return $Thread;
 		} catch(PDOException $e) {
 			return 1;
 		}

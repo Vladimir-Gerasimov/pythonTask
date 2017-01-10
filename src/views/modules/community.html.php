@@ -1,4 +1,4 @@
-<h2><?=$page_name?></h2>
+<h2><?=(!empty($page_name) ? $page_name : "" )?></h2>
 <? if(Flight::getGlobal('user_logged')){ ?>
 <div id="modal" class="modal modal-fixed-footer">
 	<div class="modal-content">
